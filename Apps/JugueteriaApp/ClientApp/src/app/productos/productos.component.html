@@ -1,0 +1,95 @@
+<h3>{{modoEdicion ? 'Editar' : 'Agregar'}} Producto</h3>
+
+
+<form class="form-horizontal" (ngSubmit)="save()" [formGroup]="formGroup">
+  <fieldset>
+    <div class="form-group">
+      <label class="col-md-2 control-label" for="Nombre">Nombre:</label>
+      <div class="col-md-8">
+        <input class="form-control" type="text" id="Nombre" required
+               maxlength="50" formControlName="Nombre" />
+        <div class="alert alert-danger" *ngIf="(formGroup.get('Nombre').touched || formGroup.get('Nombre').dirty) && formGroup.get('Nombre').invalid">
+          <span class="alert alert-danger" *ngIf="formGroup.get('Nombre').errors?.required">
+            El campo Nombre es requerido
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-2 control-label" for="Precio">Precio:</label>
+      <div class="col-md-8">
+        <input class="form-control" id="Precio" type="number" required min="1" max="1000" formControlName="Precio" />
+
+        <div class="alert alert-danger" *ngIf="(formGroup.get('Precio').touched || formGroup.get('Precio').dirty) && formGroup.get('Precio').invalid">
+          <div class="alert alert-danger" *ngIf="formGroup.get('Precio').errors?.required">
+            El campo Precio es requerido
+          </div>
+          <div class="alert alert-danger" *ngIf="formGroup.get('Precio').hasError('min')">
+            El precio minimo es 1
+          </div>
+          <div class="alert alert-danger" *ngIf="formGroup.get('Precio').hasError('max')">
+            El precio maximo es de 1000
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-2 control-label" for="Compania">Compañia:</label>
+      <div class="col-md-8">
+        <input class="form-control" id="Compania" type="text" required maxlength="50" formControlName="Compania" />
+        <div class="alert alert-danger" *ngIf="(formGroup.get('Compania').touched || formGroup.get('Compania').dirty) && formGroup.get('Compania').invalid">
+          <span class="alert alert-danger" *ngIf="formGroup.get('Compania').errors?.required">
+            El campo Compañia es requerido
+          </span>
+          <span class="alert alert-danger" *ngIf="formGroup.get('Compania').maxlength">
+            Longitud de campo maximo 50 caracteres
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-2 control-label" for="RestriccionEdad">Edad:</label>
+      <div class="col-md-8">
+        <input class="form-control" id="RestriccionEdad" type="number" min="0" max="100" formControlName="RestriccionEdad" />
+        <div class="alert alert-danger" *ngIf="(formGroup.get('RestriccionEdad').touched || formGroup.get('RestriccionEdad').dirty) && formGroup.get('RestriccionEdad').invalid">
+          <span class="alert alert-danger" *ngIf="formGroup.get('RestriccionEdad').hasError('min')">
+            La edad debe ser un valor mayor a 0
+          </span>
+          <span class="alert alert-danger" *ngIf="formGroup.get('RestriccionEdad').hasError('max')">
+            La edad debe ser un valor menor o igual a 100
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-2 control-label" for="Descripcion">Descripción:</label>
+      <div class="col-md-8">
+        <input class="form-control" id="Descripcion" type="text" maxlength="100" formControlName="Descripcion" />
+        <div class="alert alert-danger" *ngIf="(formGroup.get('Descripcion').touched || formGroup.get('Descripcion').dirty) && formGroup.get('Descripcion').invalid">
+          <span class="alert alert-danger" *ngIf="formGroup.get('Descripcion').maxlength">
+            Longitud de campo maximo 100 caracteres
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-4 col-md-offset-2">
+        <span>
+          <button class="btn btn-primary"
+                  type="submit"
+                  [disabled]="!formGroup.valid">
+            Guardar
+          </button>
+          <button class="btn"
+                  type="button"
+                  [routerLink]='["/"]'>
+            Cancelar
+          </button>
+        </span>
+
+      </div>
+
+    </div>
+  </fieldset>
+
+</form>

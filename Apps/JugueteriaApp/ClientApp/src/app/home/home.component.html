@@ -1,0 +1,33 @@
+<h1 id="tableLabel">Listado del Producto</h1>
+
+<button class="btn btn-primary" [routerLink]='["/productos"]'>Add New +</button>
+<!--<p *ngIf="!(productos && productos.length)">
+  No existen registros para mostrar
+</p>-->
+
+
+<table class="table" *ngIf="productos ">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Precio</th>
+      <th>Compañia</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let producto of productos ">
+      <td>{{ producto.id }}</td>
+      <td>{{ producto.nombre }}</td>
+      <td>{{ producto.restriccionEdad }}</td>
+      <td>{{ producto.precio }}</td>
+      <td>{{ producto.compania }}</td>
+      <td>
+        <button class="btn btn-primary" [routerLink]='["/productos/" + producto.id]'>Editar</button>
+        <button class="btn btn-danger" (click)="delete(producto.id)">Borrar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
