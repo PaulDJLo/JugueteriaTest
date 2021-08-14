@@ -22,8 +22,16 @@ con la finalidad de ejecutar la migracion y se actualice en la BD.
 
 Una vez finalizado estos pasos se puede ejecutar el proyecto y consumir los servicios.
 
-Ejecutar el proyecto ProductosServices:
-
+Ejecutar el proyecto JugueteriaApp:
+asegurarse que esta ejecutandose el proyecto ProductosServices para poder consumir dichos servicios.
+Establecer como proyecto de inicio el proyecto JugueteriaApp
+Ubicarse en la siguiente carpeta del proyecto:
+Apps/JugueteriaApp/ClientApp y dar click secundario para abrir el menu contextual y dar click en copiar ruta de acceso completa, posteriormente abrir consola de cmd  escribir:
+cd ruta_copiada
+con la finalidad de posicionarnos en dicha ruta y escribir lo siguiente:
+ng -serve
+con la finalidad de compilar el proyecto angular
+una vez finalizado dicha compilacion podemos ejecutar el proyecto desde visual studio.
 
 
 
